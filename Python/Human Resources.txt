@@ -1,0 +1,41 @@
+import pandas as p
+import numpy as n
+import matplotlib.pyplot as plt
+data = p.read_csv("E:/IWP Project/IWP Datasets/Human Resources.csv")
+data1 = data.ffill(axis = 1)
+data1.head()
+social = data1["Social_workers"]
+year = data1["Year"]
+psychiatrists = data1["Psychiatrists"]
+nurses = data1["Nurses"]
+psychologists = data1["Psychologists"]
+country = data1["Country"]
+def pieplot(name):
+    index = 0
+    for i in range(0,len(country)):
+        if(country[i]==name):
+            index = i;
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    ax.axis('equal')
+    asiacount = [psychiatrists[index],nurses[index],psychologists[index],social[index]]
+    people = ["Psychiatrists","Nurses","Psychologists","Social Workers"]
+    ax.pie(asiacount, labels = people,autopct='%1.2f%%')
+    plt.title(country[index])
+    plt.show()
+    
+pieplot("Bhutan")
+pieplot("Afghanistan")
+pieplot("Indonesia")
+pieplot("Japan")
+pieplot("Nepal")
+pieplot("Bangladesh")
+pieplot("Myanmar")
+pieplot("Saudi Arabia")
+pieplot("United Arab Emirates")
+pieplot("Turkey")
+pieplot("India")
+pieplot("United States of America")
+pieplot("New Zealand")
+pieplot("Greece")
+

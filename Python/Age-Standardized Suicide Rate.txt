@@ -1,0 +1,64 @@
+import pandas as p
+import numpy as n
+import matplotlib.pyplot as plt
+data = p.read_csv("E:/IWP Project/IWP Datasets/Age-standardized suicide rates.csv")
+country = data["Country"]
+sex = data["Sex"]
+year1 = data["2016"]
+year2 = data["2015"]
+year3 = data["2010"]
+year4 = data["2000"]
+def barplot(name):
+    index = 0;
+    for i in range(0,len(country)):
+        if(country[i]==name):
+            index = i
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    yaxis1 = [year1[index-1],year2[index-1],year3[index-1],year4[index-1]]
+    yaxis2 = [year1[index],year2[index],year3[index],year4[index]]
+    xaxis = ["2016","2015","2010","2000"]
+    ax.bar(xaxis,yaxis1,color = 'r')
+    ax.set_title(country[index]+ "(Deaths per 100000)")
+    ax.legend(labels = ['Males'])
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Deaths")
+    plt.show()
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    xaxis = ["2016","2015","2010","2000"] 
+    yaxis2 = [year1[index],year2[index],year3[index],year4[index]]
+    ax.bar(xaxis,yaxis2,color = 'g')
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Deaths")
+    ax.set_title(country[index]+ "(Deaths per 100000)")
+    ax.legend(labels = ['Females'])
+    plt.show()
+	
+barplot("Afghanistan")
+barplot("Japan")
+barplot("Oman")
+barplot("Sri Lanka")
+barplot("Nepal")
+barplot("Myanmar")
+barplot("United Arab Emirates")
+barplot("Pakistan")
+barplot("Turkey")
+barplot("Bangladesh")
+barplot("Indonesia")
+barplot("Bhutan")
+barplot("Saudi Arabia")
+barplot("India")
+barplot("United States of America")
+barplot("Australia")
+barplot("New Zealand")
+barplot("Russian Federation")
+barplot("Germany")
+barplot("Spain")
+barplot("Portugal")
+barplot("Austria")
+barplot("United Kingdom of Great Britain and Northern Ireland")
+barplot("Italy")
+barplot("Greece")
+
+	

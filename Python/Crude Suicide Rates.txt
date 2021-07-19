@@ -1,0 +1,62 @@
+import pandas as p
+import numpy as n
+import matplotlib.pyplot as plt
+data = p.read_csv("C:/Users/Aditya/Desktop/Crude suicide rates.csv")
+country = data["Country"]
+gender = data["Sex"]
+vold = data[">80"]
+old = data["Old"]
+senior = data["Senior"]
+middle2 = data["Middle2"]
+middle1 = data["Middle1"]
+millenial = data["Millenial"]
+adult = data["Adult"]
+teen = data["Teen"]
+def pieplot(name):
+    index = 0
+    for i in range(0,len(country)):
+        if(country[i]==name):
+            index = i;
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    ax.axis('equal')
+    asiacountm = [vold[index-1],old[index-1],senior[index-1],middle2[index-1],middle1[index-1],millenial[index-1],adult[index-1],teen[index-1]]
+    life = ["80-89","70-79","60-69","50-59","40-49","30-39","20-29","10-19"]
+    ax.pie(asiacountm, labels = life,autopct='%1.2f%%')
+    plt.title(country[index] + "(Males)")
+    plt.show()
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    ax.axis('equal')
+    asiacountf = [vold[index],old[index],senior[index],middle2[index],middle1[index],millenial[index],adult[index],teen[index]]
+    life = ["80-89","70-79","60-69","50-59","40-49","30-39","20-29","10-19"]
+    ax.pie(asiacountf, labels = life,autopct='%1.2f%%')
+    plt.title(country[index] + "(Females)")
+    plt.show()
+pieplot("Bhutan")
+pieplot("Afghanistan")
+pieplot("Pakistan")
+pieplot("Indonesia")
+pieplot("China")
+pieplot("Japan")
+pieplot("Nepal")
+pieplot("Sri Lanka")
+pieplot("Bangladesh")
+pieplot("Myanmar")
+pieplot("Oman")
+pieplot("Saudi Arabia")
+pieplot("United Arab Emirates")
+pieplot("Turkey")
+pieplot("India")
+pieplot("United States of America")
+pieplot("Australia")
+pieplot("New Zealand")
+pieplot("Russian Federation")
+pieplot("Germany")
+pieplot("Spain")
+pieplot("Portugal")
+pieplot("Austria")
+pieplot("United Kingdom of Great Britain and Northern Ireland")
+pieplot("Italy")
+pieplot("Greece")
+
